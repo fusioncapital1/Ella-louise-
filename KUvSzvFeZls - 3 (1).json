@@ -1,5 +1,5 @@
 {
-  "name": "🤖Content Creator Agent",
+  "name": "Ella Louise Gemini Content Agent",
   "nodes": [
     {
       "parameters": {
@@ -21,10 +21,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
-      "position": [
-        240,
-        180
-      ],
+      "position": [240, 180],
       "id": "0fb22922-121d-4f1c-8423-77c3cb7893ce",
       "name": "Tavily"
     },
@@ -33,35 +30,30 @@
         "promptType": "define",
         "text": "={{ $json.query}}",
         "options": {
-          "systemMessage": "=# Overview\nYou are a skilled AI blog writer specializing in engaging, well-structured, and informative content. Your writing style is clear, compelling, and tailored to the target audience. You optimize for readability, SEO, and value, ensuring blogs are well-researched, original, and free of fluff.\n\n## Tools\nTavily - Use this to search the web about the requested topic for the blog post.\n\n## Blog Requirements\nFormat all blog content in HTML, using proper headings (<h1>, <h2>), paragraphs (<p>), bullet points (<ul><li>), and links (<a href=\"URL\">) for citations. All citations from the Tavily tool must be preserved, with clickable hyperlinks so readers can access the original sources.\n\nMaintain a natural, human-like tone, use varied sentence structures, and include relevant examples or data when needed. Structure content for easy reading with concise paragraphs and logical flow. Always ensure factual accuracy and align the tone with the intended brand or purpose.\""
+          "systemMessage": "=# Overview\nYou are a skilled AI blog writer specializing in engaging, well-structured, and informative content. Your writing style is clear, compelling, and tailored to the target audience. You optimize for readability, SEO, and value, ensuring blogs are well-researched, original, and free of fluff.\n\n## Tools\nTavily - Use this to search the web about the requested topic for the blog post.\n\n## Blog Requirements\nFormat all blog content in HTML, using proper headings (<h1>, <h2>), paragraphs (<p>), bullet points (<ul><li>), and links (<a href=\"URL\">) for citations. All citations from the Tavily tool must be preserved, with clickable hyperlinks so readers can access the original sources.\n\nMaintain a natural, human-like tone, use varied sentence structures, and include relevant examples or data when needed. Structure content for easy reading with concise paragraphs and logical flow. Always ensure factual accuracy and align the tone with the intended brand or purpose."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
-      "position": [
-        120,
-        -100
-      ],
+      "position": [120, -100],
       "id": "585eaf6a-3f7b-4a85-973e-fd78806ba230",
       "name": "Content Creator Agent",
       "onError": "continueErrorOutput"
     },
     {
       "parameters": {
+        "model": "gemini-pro",
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
-      "typeVersion": 1.2,
-      "position": [
-        -40,
-        140
-      ],
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.0,
+      "position": [-40, 140],
       "id": "0ad7fbd5-5317-4979-9688-d99bc3a3fad2",
-      "name": "Anthropic Chat Model",
+      "name": "Gemini Chat Model",
       "credentials": {
-        "anthropicApi": {
-          "id": "iEsH2oywXIJiWHnM",
-          "name": "Anthropic account"
+        "googleGeminiApi": {
+          "id": "Ella Louise",
+          "apiKey": "AIzaSyBRAPIreRCf8IOWq047OjI3igkJYxrtOXI"
         }
       }
     },
@@ -81,10 +73,7 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        560,
-        -180
-      ],
+      "position": [560, -180],
       "id": "ec1997eb-6a99-488b-b496-8355df6c003c",
       "name": "Response"
     },
@@ -104,10 +93,7 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        560,
-        0
-      ],
+      "position": [560, 0],
       "id": "0cf971a0-cd9f-4bcf-b020-4839fd3a3708",
       "name": "Try Again"
     },
@@ -117,10 +103,7 @@
       },
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
-      "position": [
-        -140,
-        -100
-      ],
+      "position": [-140, -100],
       "id": "9ad2ac76-7c2b-40ca-9bf2-9c30ac8d132b",
       "name": "When Executed by Another Workflow"
     }
@@ -138,7 +121,7 @@
         ]
       ]
     },
-    "Anthropic Chat Model": {
+    "Gemini Chat Model": {
       "ai_languageModel": [
         [
           {
@@ -190,4 +173,4 @@
   },
   "id": "WWSu94V939ATcqvi",
   "tags": []
-}
+} 
